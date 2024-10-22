@@ -74,12 +74,12 @@ void	relayMsg(int sender, int maxfdz, char *msg, fd_set* wrtfd) {
 }
 
 int main(int c, char *v[]) {
-	/*given
+	/*  these are given
 	int sockfd, connfd, len;
-	struct sockaddr_in servaddr, cli; */
+	struct sockaddr_in servaddr, cli;
+ 	*/
 
 	//modify the provided variables to:
-
 	int sockfd, connfd, maxfdz, clientz[65365], id = 0;
 	struct sockaddr_in servaddr, cli;
 	socklen_t len;
@@ -89,8 +89,8 @@ int main(int c, char *v[]) {
 
 	if (c != 2)
 		error(!true);
-	//! clean the following code provided!
 	
+	//! clean the following code provided!
 	/*
 	// socket create and verification 
 	sockfd = socket(AF_INET, SOCK_STREAM, 0); 
@@ -119,7 +119,7 @@ int main(int c, char *v[]) {
 		exit(0); 
 	}
 	*/
-
+	//it should look like this after u get rid of the printfz:
 	sockfd = socket(AF_INET, SOCK_STREAM, 0); 
 	if (sockfd == -1)
 		error(true);
@@ -174,6 +174,7 @@ int main(int c, char *v[]) {
 				relayMsg(connfd, maxfdz, alertz, &wrtfd);
 
 				FD_SET(connfd, &fdz);
+				//now add the last remaing part
 			} else {
 				int rcv = recv(fd, buff, 511, 0);
 				if (rcv <= 0) {
